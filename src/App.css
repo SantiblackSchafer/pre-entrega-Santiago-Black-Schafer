@@ -1,0 +1,59 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'bootstrap/dist/css/bootstrap-theme.min.css';
+@import 'font-awesome/css/font-awesome.min.css';
+@import 'animate.css';
+
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: #333;
+  color: white;
+  padding: 1rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  margin: 0 1rem;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.cart-widget {
+  display: flex;
+  align-items: center;
+}
+
+.item-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem;
+}
+
+.item {
+  border: 1px solid #ccc;
+  margin: 1rem;
+  padding: 1rem;
+  width: calc(33.333% - 2rem);
+  box-sizing: border-box;
+}
+
+.item h3 {
+  margin-top: 0;
+}
+
