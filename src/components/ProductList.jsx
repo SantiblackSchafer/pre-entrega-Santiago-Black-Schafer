@@ -1,11 +1,11 @@
-// ProductList.jsx
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 const products = [
     { id: 1, name: 'Product 1' },
     { id: 2, name: 'Product 2' },
-  // Agrega más productos según sea necesario
+
 ];
 
 const ProductList = () => {
