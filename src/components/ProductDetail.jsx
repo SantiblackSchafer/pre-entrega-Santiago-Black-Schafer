@@ -1,27 +1,27 @@
-
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-
-const products = [
-    { id: 1, name: 'Product 1', description: 'This is Product 1' },
-    { id: 2, name: 'Product 2', description: 'This is Product 2' },
-    
-];
+import { fetchProductById } from '../Async-mocks';
 
 const ProductDetail = () => {
-    const { productId } = useParams();
-    const product = products.find((p) => p.id === parseInt(productId));
+    const { itemId } = useParams();
+    const [product, setProduct] = useState(null);
+
+    useEffect(() => {
+        fetchProductById(itemId).then(setProduct);
+    }, [itemId]);
 
     if (!product) {
-        return <div>Product not found</div>;
+        return <div>Loading...</div>;
     }
 
     return (
         <div>
         <h1>{product.name}</h1>
-        <p>{product.description}</p>
+        <img src={product.image} alt={product.name} style={{ width: '300px', height: '300px' }} />
+        <p>{product.description || 'No description available'}</p>
         </div>
     );
-}
+};
 
 export default ProductDetail;
+
