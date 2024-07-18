@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { fetchProductsByCategory } from '../Async-mocks';
+import { fetchProductsByCategory } from '../../Async-mocks';
 
 const ProductList = () => {
     const { categoryId } = useParams();
