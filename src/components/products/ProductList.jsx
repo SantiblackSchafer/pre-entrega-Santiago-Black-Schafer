@@ -1,7 +1,8 @@
 // src/components/products/ProductList.jsx
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { fetchProductsByCategory, fetchAllProducts } from '../../Async-mocks';
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import { db } from '../../../firebase'; // Asegúrate de que esta ruta sea correcta.
 
 const ProductList = () => {
     const { categoryId } = useParams();
@@ -9,12 +10,21 @@ const ProductList = () => {
 
     useEffect(() => {
         const fetchProducts = async () => {
-        if (categoryId) {
-            const products = await fetchProductsByCategory(categoryId);
-            setProducts(products);
-        } else {
-            const products = await fetchAllProducts();
-            setProducts(products);
+        try {
+            let q;
+            if (categoryId) {
+            // Crea una consulta a Firestore para obtener productos de una categoría específica
+            q = query(collection(db, 'products'), where('category', '==', categoryId));
+            } else {
+            // Obtén todos los productos si no hay categoría específica
+            q = collection(db, 'products');
+            }
+
+            const querySnapshot = await getDocs(q);
+            const productsList = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            setProducts(productsList);
+        } catch (error) {
+            console.error("Error fetching products: ", error);
         }
         };
 
@@ -39,6 +49,7 @@ const ProductList = () => {
 };
 
 export default ProductList;
+
 
 
 
