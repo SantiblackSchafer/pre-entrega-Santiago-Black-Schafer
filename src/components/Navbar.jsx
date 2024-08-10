@@ -1,7 +1,7 @@
 // NavigationBar.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
-import CartWidget from './CartWidget';
+import CartWidget from './CART/CartWidget';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 
 const NavigationBar = () => {

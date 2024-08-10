@@ -1,9 +1,9 @@
 import React from 'react';
 import NavigationBar from './components/Navbar';
-import ProductList from './components/ProductList';
-import ProductDetail from './components/ProductDetail';
-import Cart from './components/Cart';
-import CartProvider from './components/CartContext';
+import ProductList from './components/products/ProductList';
+import ProductDetail from './components/products/ProductDetail';
+import Cart from './components/CART/Cart';
+import CartProvider from './components/CART/CartContext';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 const App = () => {
@@ -21,8 +21,10 @@ const App = () => {
       </BrowserRouter>
     </CartProvider>
   );
-}
+};
 
 export default App;
+
+
 
 

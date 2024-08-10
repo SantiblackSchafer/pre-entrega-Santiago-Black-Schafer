@@ -1,15 +1,24 @@
+// src/components/products/ProductList.jsx
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { fetchProductsByCategory } from '../../Async-mocks';
+import { fetchProductsByCategory, fetchAllProducts } from '../../Async-mocks';
 
 const ProductList = () => {
     const { categoryId } = useParams();
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
+        const fetchProducts = async () => {
         if (categoryId) {
-        fetchProductsByCategory(categoryId).then(setProducts);
+            const products = await fetchProductsByCategory(categoryId);
+            setProducts(products);
+        } else {
+            const products = await fetchAllProducts();
+            setProducts(products);
         }
+        };
+
+        fetchProducts();
     }, [categoryId]);
 
     return (
@@ -30,5 +39,7 @@ const ProductList = () => {
 };
 
 export default ProductList;
+
+
 
 
